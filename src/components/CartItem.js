@@ -20,7 +20,7 @@ class CartItem extends Component {
                 <div className="btn-group radio-group" data-toggle="buttons">
                     <label className="btn btn-sm btn-primary
                         btn-rounded waves-effect waves-light">
-                        <a>—</a>
+                        <a href={"#"} >—</a>
                     </label>
                     <label className="btn btn-sm btn-primary
                         btn-rounded waves-effect waves-light">

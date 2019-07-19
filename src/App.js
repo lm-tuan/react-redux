@@ -23,6 +23,7 @@ class App extends Component {
               </div>
           </main>
           {/* <!-- Footer --> */}
+          <Footer/>
           
       </div>
       </div>
