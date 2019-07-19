@@ -2,14 +2,30 @@ import React, {Component} from 'react';
 
 
 class Product extends Component {
+   
+    showRating  = (rate) => {
+        var result =  [];
+        var key = 0;
+        if(rate>0) {
+            for(var i = 0;i<rate;i++){
+                result.push(<i key={key} className="fa fa-star"></i>);
+                key++;
+            }
+            for(var j = 0;j<(5-rate);j++){
+                result.push(<i key={key} className="fa fa-star-o"></i>);
+                key++;
+            }
+        }
+        return result;
+    }
   render(){
-      
-      const { name,description,price} = this.props.product.product;
+     
+      const { name,description,price,rating,imageLink} = this.props.product.product;
     return (
         <div className="col-lg-4 col-md-6 mb-r">
             <div className="card text-center card-cascade narrower">
                 <div className="view overlay hm-white-slight z-depth-1">
-                    <img src="https://store.storeimages.cdn-apple.com/4974/as-images.apple.com/is/image/AppleInc/aos/published/images/H/H0/HH0H2/HH0H2?wid=445&hei=445&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=K7ik72"
+                    <img src={imageLink}
                         className="img-fluid" alt="" />
                     <a>
                         <div className="mask waves-light waves-effect waves-light"></div>
@@ -22,21 +38,12 @@ class Product extends Component {
                         </strong>
                     </h4>
                     <ul className="rating">
-                        <li>
-                            <i className="fa fa-star"></i>
-                        </li>
-                        <li>
-                            <i className="fa fa-star"></i>
-                        </li>
-                        <li>
-                            <i className="fa fa-star"></i>
-                        </li>
-                        <li>
-                            <i className="fa fa-star"></i>
-                        </li>
-                        <li>
-                            <i className="fa fa-star"></i>
-                        </li>
+                       <li>
+                            {
+                              this.showRating(rating)
+                            }
+                       </li>
+                      
                     </ul>
                     <p className="card-text">
                         {description}
@@ -54,6 +61,9 @@ class Product extends Component {
     </div>   
     );
   }
-}
+
+
+ 
+}  
 
 export default Product;
