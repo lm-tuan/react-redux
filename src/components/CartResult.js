@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 
 class CartResult extends Component {
+    
   render(){
+    const {carts} = this.props;
+    
     return (
         <tr>
             <td colSpan="3"></td>
@@ -13,7 +17,7 @@ class CartResult extends Component {
             </td>
             <td>
                 <h4>
-                    <strong>15$</strong>
+                    <strong>{this.OnTotalAmount(carts)}$</strong>
                 </h4>
             </td>
             <td colSpan="3">
@@ -24,6 +28,25 @@ class CartResult extends Component {
         </tr>
     );
   }
+  OnTotalAmount = (products) => {
+    var total = 0;
+    for(var i = 0;i < products.length;i++){
+        total += products[i].product.price *  products[i].quanlity;
+    }
+
+    return total;
+
+  }
+  
 }
 
-export default CartResult;
+const mapStateToProps = state => {
+    return {
+      carts:state.carts
+    }
+}
+const mapDispatchToProps = (dispatch,props) => {
+  return {};
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CartResult);

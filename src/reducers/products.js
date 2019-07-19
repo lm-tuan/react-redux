@@ -6,7 +6,8 @@ const initalState = [
     {
         product:
             {
-                id: randomstring.generate(),
+                // id: randomstring.generate(),
+                 id:1,
                 name:'Iphone 6 Plus',
                 description: 'Sản phẩm do apply sản xuất',
                 imageLink:"https://cdn.fptshop.com.vn/Uploads/Originals/2016/12/13/636172339622394948_apple-Iphone-6s-gold-1.jpg",
@@ -21,6 +22,7 @@ const initalState = [
         product:
             {
                 id: randomstring.generate(),
+                 id:2,
                 name:'Iphone 7 Plus',
                 description: 'Sản phẩm do apply sản xuất và china',
                 price:400,
@@ -34,7 +36,8 @@ const initalState = [
     {
         product:
             {
-                id: randomstring.generate(),
+                //  id: randomstring.generate(),
+                 id:3,
                 name:'SamSung J7 Pro',
                 description: 'Sản phẩm do apply sản xuất và china',
                 price:400,
@@ -50,10 +53,10 @@ const initalState = [
 const products =  (state = initalState, action) => {
     switch (action.type) {
         case types.SHOW_PRODUCTS:
-            console.log(action);
-            return state;
+            
+            return [...state];
         default:
-            return state;
+            return [...state]
     }
 } 
 

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import * as actions from './../actions/index';
+import {connect} from 'react-redux';
 
 
 class Product extends Component {
@@ -18,7 +20,10 @@ class Product extends Component {
         }
         return result;
     }
+
+    
   render(){
+      
      
       const { name,description,price,rating,imageLink} = this.props.product.product;
     return (
@@ -51,7 +56,7 @@ class Product extends Component {
                     <div className="card-footer">
                         <span className="left">{price}$</span>
                         <span className="right">
-                            <a className="btn-floating blue-gradient" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
+                            <a onClick = {()=> this.props.onAddToCart(this.props.product,1)} className="btn-floating blue-gradient" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
                                 <i className="fa fa-shopping-cart"></i>
                             </a>
                         </span>
@@ -66,4 +71,18 @@ class Product extends Component {
  
 }  
 
-export default Product;
+
+const mapStateToProps = state => {
+    return {
+      
+    }
+}
+const mapDispatchToProps = (dispatch,props) => {
+  return {
+      onAddToCart:(product,quanlity)=>{
+          dispatch(actions.onAddToCart(product,quanlity));
+      }
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Product);

@@ -5,3 +5,11 @@ export const ListAll = () => {
         type:types.SHOW_PRODUCTS
     }
 }
+
+export const onAddToCart = (product,quanlity) => {
+    return {
+        type:types.ADD_TO_CART,
+        product,
+        quanlity
+    }
+} 
