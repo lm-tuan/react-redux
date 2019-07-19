@@ -13,3 +13,18 @@ export const onAddToCart = (product,quanlity) => {
         quanlity
     }
 } 
+
+export const onChangeMessage = (message) => {
+    return {
+        type:types.CHANGE_MESSAGE,
+        message
+        
+    }
+}
+export const OnDeleteProductCart = (product) => {
+    return {
+        type:types.DELETE_PRODUCT_CART,
+        product
+        
+    }
+}

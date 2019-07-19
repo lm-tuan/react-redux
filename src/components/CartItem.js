@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
+import * as actions from './../actions/index';
+import * as messages from './../contants/message';
+import {connect} from 'react-redux';
 
 
 class CartItem extends Component {
+
+    onDeleteProductCart = () =>{
+        this.props.onDeleteProductCart(this.props.product);
+        this.props.onChangeMessage(messages.MSG_DELETE_PRODUCT_CART);
+    }  
   render(){
    
       const {product} = this.props.product;
@@ -33,7 +41,7 @@ class CartItem extends Component {
             </td>
             <td>{product.price *this.props.product.quanlity}$</td>
             <td>
-                <button type="button" className="btn btn-sm btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="top"
+                <button onClick = {this.onDeleteProductCart} type="button" className="btn btn-sm btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="top"
                     title="" data-original-title="Remove item">
                     X
                 </button>
@@ -43,4 +51,21 @@ class CartItem extends Component {
   }
 }
 
-export default CartItem;
+const mapStateToProps = state => {
+    return {
+      
+    }
+}
+
+const mapDispatchToProps = (dispatch,props) => {
+  return {
+      onDeleteProductCart: (product) => {
+          dispatch(actions.OnDeleteProductCart(product));
+      },
+      onChangeMessage: (message) => {
+        dispatch(actions.onChangeMessage(message));
+      }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (CartItem);
